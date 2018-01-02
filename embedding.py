@@ -18,8 +18,8 @@ def make_mini_embed(save_dir, embed_path, embed_name, word2id):
             if hang == 0 or line == '' or len(line) == 0:
                 hang = hang + 1
             else:
-                strs = line.split(' ')
-                if strs[0] in word2id:
+                strings = line.split(' ')
+                if strings[0] in word2id:
                     output.write(line + '\n')
                     output.flush()
                     find += 1
@@ -37,8 +37,8 @@ def create_embedding(embed_path, pkl_path, pkl_name, embed_dim, id2word):
     m_dict = {}
     for idx, line in enumerate(embed_f.readlines()):
         if not (line == '' or len(line) == 0):
-            strs = line.split(' ')
-            m_dict[strs[0]] = [float(i) for idx2, i in enumerate(strs) if not idx2 == 0]
+            strings = line.split(' ')
+            m_dict[strings[0]] = [float(i) for idx2, i in enumerate(strings) if not idx2 == 0]
     embed_f.close()
 
     m_embed = []
@@ -49,9 +49,9 @@ def create_embedding(embed_path, pkl_path, pkl_name, embed_dim, id2word):
         else:
             not_found += 1
             if idx == 1:
-                m_embed.append([0 for i in range(embed_dim)])
+                m_embed.append([0 for _ in range(embed_dim)])
             else:
-                m_embed.append([round(random.uniform(-0.25, 0.25), 6) for i in range(embed_dim)])
+                m_embed.append([round(random.uniform(-0.25, 0.25), 6) for _ in range(embed_dim)])
 
     print('-------')
     print('all', len(id2word))

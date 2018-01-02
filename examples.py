@@ -51,6 +51,26 @@ class Examples(object):
                     sequence.append(word)
                 self.examples.append(Example(sequence, label))
         elif label_num == 5:
-            pass
+            for line in f:
+                sequence = []
+                end = line.find('|')
+                text = clean_sequence(line[:end])
+                if line[-2] == '0':
+                    label = "strong_negative"
+                elif line[-2] == '1':
+                    label = "weak_negative"
+                elif line[-2] == '2':
+                    label = "neutral"
+                elif line[-2] == '3':
+                    label = "weak_positive"
+                elif line[-2] == '4':
+                    label = "strong_positive"
+                else:
+                    print("something wrong")
+                    exit()
+                strings = text.split(' ')
+                for word in strings:
+                    sequence.append(word)
+                self.examples.append(Example(sequence, label))
         if shuffle:
             random.shuffle(self.examples)

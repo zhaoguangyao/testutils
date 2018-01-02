@@ -3,10 +3,10 @@
 import os
 import pickle
 
-import embedding
-from examples import Examples
-from vocabulary import Vocabulary
-from batch import MyIterator
+from . import embedding
+from .examples import Examples
+from .vocabulary import Vocabulary
+from .batch import MyIterator
 
 import torch
 import numpy
