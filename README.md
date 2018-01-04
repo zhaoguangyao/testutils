@@ -1,7 +1,7 @@
 # textutils
 process corpus
 
-this can be used for sst 
+this can be used for sst , just for what I have experience
 
 # parameters
 
